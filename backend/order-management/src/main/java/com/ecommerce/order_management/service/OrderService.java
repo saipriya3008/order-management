@@ -66,7 +66,7 @@ public class OrderService {
                 .filter(o -> toDate == null || !o.getDeliveryDate().isAfter(toDate))
                 .filter(o -> minPrice == null || o.getDeliveryPrice() >= minPrice)
                 .filter(o -> maxPrice == null || o.getDeliveryPrice() <= maxPrice)
-                .filter(o -> finalStatus == null || o.getStatus().equalsIgnoreCase(finalStatus))
+                .filter(o -> finalStatus == null || o.getStatus().toLowerCase().equals(finalStatus))
                 .collect(Collectors.toList());
 
         int start = (int) pageable.getOffset();
